@@ -5,6 +5,12 @@ class Book:
         self.author = author
         self.id = id
 
+    def __repr__(self):
+        return '{}:{}:{}'.format(self.id, self.title, self.author)
+
+    def __str__(self):
+        return '{}:{}:{}'.format(self.id, self.title, self.author)
+
     def set_id(self, id):
         self.id = id
 
