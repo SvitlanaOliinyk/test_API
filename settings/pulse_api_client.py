@@ -10,7 +10,8 @@ class PulseRestAPI:
     def create_obj(self, obj_resourse):
         obj_data = obj_resourse.get_dict_without_id()
         new_book = requests.post(self.url, data=obj_data)
-        obj_resourse.set_id(new_book.json()['id'])
+        if new_book.status_code == 201:
+            obj_resourse.set_id(new_book.json()['id'])
         return new_book
 
     def get_list_obj(self):
