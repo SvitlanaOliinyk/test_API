@@ -25,7 +25,7 @@ def test_new_book(app, book):
     #Verification
     assert new_book.status_code == 201
     assert new_book.json() == book.get_dict()
-    #app.delete_obj(new_book)              # Где правильно писать?
+    app.delete_obj(book)
 
 @pytest.mark.parametrize('book', test_data, ids=[repr(b) for b in test_data])
 def test_book_in_list(app, book):
@@ -33,7 +33,7 @@ def test_book_in_list(app, book):
     book_list = app.get_list_obj()
     # Verification
     assert new_book in book_list
-    #app.delete_obj(new_book.json())
+    app.delete_obj(book)
 
 
 def test_new_book_without_autor(app):
